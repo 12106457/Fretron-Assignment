@@ -1,0 +1,57 @@
+import java.util.*;
+
+public class My_Money_My_Shares {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        ArrayList<Integer> weightList=new ArrayList<>();
+        
+        do {
+        	System.out.print("Enter apple weight in grams (-1 to stop): ");
+        	int val=sc.nextInt();
+        	if(val==-1) {
+        		break;
+        	}
+        	weightList.add(val);
+        }while(true);
+        Collections.sort(weightList,(a,b)->(b-a));
+        int totalWeight=0;
+        for(int val:weightList) {
+        	totalWeight+=val;
+        }
+        int totalAmount=100;
+        int ramAmount=50;
+        int shamAmount=30;
+        int rahimAmount=20;
+        
+        int ramShare=(totalWeight/totalAmount)*ramAmount;
+        int shamShare=(totalWeight/totalAmount)*shamAmount;
+        int rahimShare=(totalWeight/totalAmount)*rahimAmount;
+        
+        ArrayList<Integer> ramWeight=new ArrayList<>();
+        ArrayList<Integer> shamWeight=new ArrayList<>();
+        ArrayList<Integer> rahimWeight=new ArrayList<>();
+        
+        for(int weight:weightList) {
+        	if(weight<=ramShare) {
+        			ramWeight.add(weight);
+        			ramShare-=weight;
+        	}else if(weight<=shamShare) {
+        		shamWeight.add(weight);
+        		shamShare-=weight;
+        	}else {
+        		rahimWeight.add(weight);
+        	}
+        }
+        
+        System.out.println("Distribution Result:");
+        System.out.println("Ram: " + ramWeight);
+        System.out.println("Sham: " + shamWeight);
+        System.out.println("Rahim: " + rahimWeight);
+        
+        
+        
+        
+        
+    }
+}
